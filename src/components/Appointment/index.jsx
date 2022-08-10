@@ -1,5 +1,8 @@
-import React, {useState} from 'react'
+import React, { useState, Fragment } from 'react'
 import "components/Appointment/styles.scss"
+import Header from './Header'
+import Show from './Show'
+import Empty from './Empty'
 
 const Appointment = (props) => {
   return (
