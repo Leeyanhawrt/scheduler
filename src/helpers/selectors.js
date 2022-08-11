@@ -13,3 +13,17 @@ export const getAppointmentsForDay = (state, day) => {
   }
   return result
 }
+
+export const getInterview = (state, interview) => {
+  const result = {}
+
+  if (!interview) {
+    return null
+  }
+
+  result.student = interview.student
+  if (interview.interviewer) {
+    result.interviewer = state.interviewers[interview.interviewer.toString()]
+  }
+  return result
+}
