@@ -1,7 +1,6 @@
-import React, { useState } from 'react'
+import React from 'react'
 import 'components/InterviewerListItem.scss'
 import classNames from 'classnames'
-import { action } from '@storybook/addon-actions'
 
 const InterviewerListItem = (props) => {
 
