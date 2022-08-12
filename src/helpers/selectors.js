@@ -27,3 +27,19 @@ export const getInterview = (state, interview) => {
   }
   return result
 }
+
+export const getInterviewersForDay = (state, day) => {
+  const result = [];
+  for (const stateDay of state.days) {
+    if (stateDay.name === day) {
+      for (const appointment of stateDay.interviewers) {
+        for (const appointmentDay in state.interviewers) {
+          if (appointment == appointmentDay) {
+            result.push(state.interviewers[appointmentDay])
+          }
+        }
+      }
+    }
+  }
+  return result
+}
