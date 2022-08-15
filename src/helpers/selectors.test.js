@@ -106,12 +106,6 @@ const state = {
       time: "2pm",
       interview: { student: "Archie Cohen", interviewer: 2 }
     },
-    "4": { id: 4, time: "3pm", interview: null },
-    "5": {
-      id: 5,
-      time: "4pm",
-      interview: { student: "Chad Takahashi", interviewer: 2 }
-    }
   },
   interviewers: {
     "1": {
@@ -229,7 +223,7 @@ test("getInterviewersForDay returns an array containing the correct interviewer 
 });
 
 test("getInterviewersForDay returns an empty array when the days data is empty", () => {
-  const result = getInterviewersForDay([], "Monday");
+  const result = getInterviewersForDay({ days: [] }, "Monday");
   expect(result).toEqual([])
 });
 

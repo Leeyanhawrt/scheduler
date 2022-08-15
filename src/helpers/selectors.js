@@ -21,25 +21,34 @@ export const getInterview = (state, interview) => {
     return null
   }
 
-  result.student = interview.student
-  if (interview.interviewer) {
-    result.interviewer = state.interviewers[interview.interviewer.toString()]
+  for (const eachInterviewer in state.interviewers) {
+    if (state.interviewers[eachInterviewer].id === interview.interviewer) {
+      result.student = interview.student
+      result.interviewer = state.interviewers[eachInterviewer]
+    }
   }
+
   return result
 }
 
 export const getInterviewersForDay = (state, day) => {
-  const result = [];
-  for (const stateDay of state.days) {
-    if (stateDay.name === day) {
-      for (const appointment of stateDay.interviewers) {
-        for (const appointmentDay in state.interviewers) {
-          if (appointment == appointmentDay) {
-            result.push(state.interviewers[appointmentDay])
-          }
-        }
-      }
-    }
+  const found = state.days.find(d => d.name === day)
+  if (state.days.length === 0 || found === undefined) {
+    return []
   }
-  return result
+  return found.interviewers.map(id => state.interviewers[id])
 }
+
+  // const result = [];
+  // for (const stateDay of state.days) {
+  //   if (stateDay.name === day) {
+  //     for (const appointment of stateDay.interviewers) {
+  //       for (const appointmentDay in state.interviewers) {
+  //         if (appointment == appointmentDay) {
+  //           result.push(state.interviewers[appointmentDay])
+  //         }
+  //       }
+  //     }
+  //   }
+  // }
+  // return result
