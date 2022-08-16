@@ -35,7 +35,7 @@ const useApplicationData = () => {
       [id]: appointment
     };
 
-    return axios.put(`api/appointments/${id}`, { interview })
+    return axios.put(`/api/appointments/${id}`, { interview })
       .then(response => {
         const selectedDay = findDay(state.day)
         selectedDay.spots--
@@ -54,7 +54,7 @@ const useApplicationData = () => {
       [id]: appointment
     };
 
-    return axios.put(`api/appointments/${id}`, { interview })
+    return axios.put(`/api/appointments/${id}`, { interview })
       .then(response => {
         const selectedDay = findDay(state.day)
         setState({ ...state, appointments })
