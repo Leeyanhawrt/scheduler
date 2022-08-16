@@ -25,6 +25,17 @@ const Appointment = (props) => {
       .catch(() => transition(ERROR_SAVE, true))
   }
 
+  const edit = (name, interviewer) => {
+    const interview = {
+      student: name,
+      interviewer
+    }
+    transition(SAVING, true)
+    return props.editInterview(props.id, interview)
+      .then(() => transition(SHOW))
+      .catch(() => transition(ERROR_SAVE, true))
+  }
+
   const remove = () => {
     transition(REMOVE, true)
     props.cancelInterview(props.id)
@@ -67,7 +78,7 @@ const Appointment = (props) => {
           interviewer={props.interview.interviewer.id}
           student={props.interview.student}
           onCancel={back}
-          onSave={save} />}
+          onSave={edit} />}
 
       {mode === CREATE &&
         <Form
