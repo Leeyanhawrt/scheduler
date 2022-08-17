@@ -3,6 +3,8 @@ import 'components/DayListItem.scss'
 import classNames from "classnames";
 
 export default function DayListItem(props) {
+
+  // Pluralizes and assigns correct class if number of spots is greater than 1 and shows no spots remaining if spots = 0
   const dayListClass = classNames("day-list__item", {
     "day-list__item--selected": props.selected,
     "day-list__item--full": props.spots === 0

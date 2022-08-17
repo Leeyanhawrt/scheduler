@@ -3,6 +3,8 @@ import axios from "axios"
 
 const useApplicationData = () => {
 
+
+  // Changes the state of day after user clicks on one in the sidebar panel
   const setDay = day => setState({ ...state, day })
 
   const [state, setState] = useState({
@@ -12,8 +14,8 @@ const useApplicationData = () => {
     interviewers: {}
   })
 
-  const findDay = (day) => state.days.find(item => item.name === day)
 
+  // Performs an axios request on 3 API endpoints and assigns the value to state after promise resolves
   useEffect(() => {
     Promise.all([
       axios.get('/api/days'),
@@ -24,6 +26,10 @@ const useApplicationData = () => {
     })
   }, [])
 
+  // Helper function to help determine which day has been selected 
+  const findDay = (day) => state.days.find(item => item.name === day)
+
+  // Function for booking an interview and reducing the number of spots by 1
   const bookInterview = (id, interview) => {
     const appointment = {
       ...state.appointments[id],
@@ -39,10 +45,10 @@ const useApplicationData = () => {
       .then(response => {
         const selectedDay = findDay(state.day)
         selectedDay.spots--
-        setState({ ...state, appointments})
+        setState({ ...state, appointments })
       })
   }
-
+  // Function for editting an interview and keeping spots thes same
   const editInterview = (id, interview) => {
     const appointment = {
       ...state.appointments[id],
@@ -61,6 +67,7 @@ const useApplicationData = () => {
       })
   }
 
+  // Function for removing an interview and increasing the number of spots by 1
   const cancelInterview = (id) => {
     const appointment = {
       ...state.appointments[id],
@@ -76,7 +83,7 @@ const useApplicationData = () => {
       .then(() => {
         const selectedDay = findDay(state.day)
         selectedDay.spots++
-        setState({ ...state, appointments})
+        setState({ ...state, appointments })
       })
   }
 

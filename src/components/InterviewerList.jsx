@@ -5,6 +5,8 @@ import PropTypes from 'prop-types'
 
 const InterviewerList = (props) => {
 
+  // Map over all available interviewers and displays them as selection
+
   const eachInterviewer = props.interviewers.map(interviewer => {
     return (
       <InterviewerListItem

@@ -7,6 +7,9 @@ const Form = (props) => {
   const [interviewer, setInterviewer] = useState(props.interviewer || null);
   const [error, setError] = useState("")
 
+
+  // If user decides they do not want to book an interview, 
+  // removes the student field name and deselects an interview to prevent mistakes
   const reset = () => {
     setStudent("")
     setInterviewer(null)
@@ -16,6 +19,8 @@ const Form = (props) => {
     reset()
     props.onCancel()
   }
+
+  //Ensures user has entered a name in addition to choosing an interviewer
 
   const validate = () => {
     if (student === "") {

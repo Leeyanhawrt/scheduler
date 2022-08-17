@@ -14,6 +14,8 @@ import "components/Appointment/styles.scss"
 
 const Appointment = (props) => {
 
+  // When user saves an appointment transitions them to see and confirm that interview is booked
+
   const save = (name, interviewer) => {
     const interview = {
       student: name,
@@ -24,6 +26,8 @@ const Appointment = (props) => {
       .then(() => transition(SHOW))
       .catch(() => transition(ERROR_SAVE, true))
   }
+
+  // Transitions to saving screen to show user that their request is being handled and shows their interview after confirmation
 
   const edit = (name, interviewer) => {
     const interview = {
@@ -36,6 +40,8 @@ const Appointment = (props) => {
       .catch(() => transition(ERROR_SAVE, true))
   }
 
+  // Allows user to delete their appointment 
+
   const remove = () => {
     transition(REMOVE, true)
     props.cancelInterview(props.id)
@@ -43,6 +49,7 @@ const Appointment = (props) => {
       .catch(() => transition(ERROR_DELETE, true))
   }
 
+  // Different modes that will be transitioned to using the transition hook
   const EMPTY = "EMPTY";
   const SHOW = "SHOW";
   const CREATE = "CREATE";
@@ -53,6 +60,8 @@ const Appointment = (props) => {
   const ERROR_SAVE = "ERROR_SAVE"
   const ERROR_DELETE = "ERROR_DELETE"
 
+
+  // Initializes initial interview slot to see if it is empty or exisiting
 
   const { mode, transition, back } = useVisualMode(props.interview ? SHOW : EMPTY)
 
