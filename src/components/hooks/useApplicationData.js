@@ -39,7 +39,7 @@ const useApplicationData = () => {
       .then(response => {
         const selectedDay = findDay(state.day)
         selectedDay.spots--
-        setState({ ...state, appointments })
+        setState({ ...state, appointments})
       })
   }
 
@@ -76,7 +76,7 @@ const useApplicationData = () => {
       .then(() => {
         const selectedDay = findDay(state.day)
         selectedDay.spots++
-        setState({ ...state, appointments })
+        setState({ ...state, appointments})
       })
   }
 

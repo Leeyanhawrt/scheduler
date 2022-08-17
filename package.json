@@ -10,7 +10,8 @@
     "prop-types": "^15.8.1",
     "react": "^16.9.0",
     "react-dom": "^16.9.0",
-    "react-scripts": "3.4.4"
+    "react-scripts": "3.4.4",
+    "simpler-state": "^1.2.0"
   },
   "scripts": {
     "start": "react-scripts start",
